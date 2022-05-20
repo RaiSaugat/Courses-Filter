@@ -1,0 +1,7 @@
+.input__wrapper input {
+  height: 30px;
+  outline: none;
+  padding: 0.2rem 1rem;
+  font-family: Raleway, Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+}

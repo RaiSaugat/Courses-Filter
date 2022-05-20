@@ -1,0 +1,26 @@
+.filter__wrapper .filter__header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  position: relative;
+  margin-bottom: 1.6rem;
+}
+
+.filter__wrapper .filter__header::after {
+  content: '';
+  left: -10%;
+  right: 0;
+  width: 120%;
+  height: 1px;
+  background-color: #efefef;
+  position: absolute;
+  bottom: -6px;
+}
+
+.filter__wrapper .filter__header button {
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}

@@ -1,0 +1,28 @@
+.accordion__wrapper {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.accordion__wrapper .accordion__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.accordion__wrapper .accordion__header.open {
+  margin-bottom: 1rem;
+}
+
+.accordion__wrapper .accordion__items > * {
+  margin-bottom: 1rem;
+}
+
+.accordion__wrapper .accordion__header span {
+  cursor: pointer;
+}
+
+.accordion__wrapper .accordion__header .accordion__items {
+  display: flex;
+}
