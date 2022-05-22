@@ -1,20 +1,37 @@
+import { useContext } from 'react';
+
 import Accordion from 'component/accordion';
 import { Checkbox } from 'component/common';
 import { AppContext } from 'context';
-import { useContext } from 'react';
 
-function InstructionsFilter() {
-  const { courses } = useContext(AppContext);
+function InstructorFilter({ data }) {
+  const { instructorsFilter, setInstructorsFilter } = useContext(AppContext);
 
-  const instructors = courses && courses.map((course) => course.instructor);
+  const handleValueChange = (e, option) => {
+    if (e.target.checked) {
+      setInstructorsFilter([...instructorsFilter, option]);
+    } else {
+      const filtered = instructorsFilter.filter((item) => item !== option);
+      setInstructorsFilter(filtered);
+    }
+  };
 
   return (
     <Accordion title="Instructions">
-      {instructors.map((a, index) => {
-        return <Checkbox key={a + index}>{a}</Checkbox>;
-      })}
+      {data &&
+        data.map((instructor, index) => {
+          return (
+            <Checkbox
+              key={instructor + index}
+              onChange={(e) => handleValueChange(e, instructor)}
+              isChecked={instructorsFilter.includes(instructor)}
+            >
+              {instructor}
+            </Checkbox>
+          );
+        })}
     </Accordion>
   );
 }
 
-export default InstructionsFilter;
+export default InstructorFilter;

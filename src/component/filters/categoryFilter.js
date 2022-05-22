@@ -4,19 +4,11 @@ import Accordion from 'component/accordion';
 import { Checkbox, Input } from 'component/common';
 import { AppContext } from 'context';
 
-function CategoryFilter() {
-  const {
-    categoryFilter,
-    setCategoryFilter,
-    courses,
-    handleCategoryQueryChange,
-  } = useContext(AppContext);
+function CategoryFilter({ data }) {
+  const { categoryFilter, setCategoryFilter, handleCategoryQueryChange } =
+    useContext(AppContext);
 
   const [query, setQuery] = useState('');
-
-  const categories = courses && courses.map((course) => course.category);
-
-  const uniqueCategory = [...new Set(categories)];
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -42,17 +34,18 @@ function CategoryFilter() {
         placeholder="Search Category"
       />
 
-      {uniqueCategory.map((category) => {
-        return (
-          <Checkbox
-            key={category}
-            onChange={(e) => handleValueChange(e, category)}
-            isChecked={categoryFilter.includes(category)}
-          >
-            {category}
-          </Checkbox>
-        );
-      })}
+      {data &&
+        data.map((category) => {
+          return (
+            <Checkbox
+              key={category}
+              onChange={(e) => handleValueChange(e, category)}
+              isChecked={categoryFilter.includes(category)}
+            >
+              {category}
+            </Checkbox>
+          );
+        })}
     </Accordion>
   );
 }
