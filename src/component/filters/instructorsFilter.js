@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 
-import Accordion from 'component/accordion';
-import { Checkbox } from 'component/common';
+import { Accordion, Checkbox } from 'component/common';
 import { AppContext } from 'context';
 
 function InstructorFilter({ data }) {
@@ -9,9 +8,11 @@ function InstructorFilter({ data }) {
 
   const handleValueChange = (e, option) => {
     if (e.target.checked) {
-      setInstructorsFilter([...instructorsFilter, option]);
+      setInstructorsFilter([...instructorsFilter, option.toLowerCase()]);
     } else {
-      const filtered = instructorsFilter.filter((item) => item !== option);
+      const filtered = instructorsFilter.filter(
+        (item) => item !== option.toLowerCase()
+      );
       setInstructorsFilter(filtered);
     }
   };
@@ -24,7 +25,7 @@ function InstructorFilter({ data }) {
             <Checkbox
               key={instructor + index}
               onChange={(e) => handleValueChange(e, instructor)}
-              isChecked={instructorsFilter.includes(instructor)}
+              isChecked={instructorsFilter.includes(instructor.toLowerCase())}
             >
               {instructor}
             </Checkbox>

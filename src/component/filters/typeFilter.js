@@ -1,11 +1,36 @@
-import Accordion from 'component/accordion';
-import { Checkbox } from 'component/common';
+import { useContext } from 'react';
 
-function TypeFilter() {
+import { Checkbox, Accordion } from 'component/common';
+import { AppContext } from 'context';
+
+function TypeFilter({ data }) {
+  const { typeFilter, setTypeFilter } = useContext(AppContext);
+
+  const handleValueChange = (e, option) => {
+    if (e.target.checked) {
+      setTypeFilter([...typeFilter, option.toLowerCase()]);
+    } else {
+      const filtered = typeFilter.filter(
+        (item) => item !== option.toLowerCase()
+      );
+      setTypeFilter(filtered);
+    }
+  };
+
   return (
     <Accordion title="Type">
-      <Checkbox>Courses</Checkbox>
-      <Checkbox>Streams</Checkbox>
+      {data &&
+        data.map((type) => {
+          return (
+            <Checkbox
+              key={type}
+              onChange={(e) => handleValueChange(e, type)}
+              isChecked={typeFilter.includes(type.toLowerCase())}
+            >
+              {type}
+            </Checkbox>
+          );
+        })}
     </Accordion>
   );
 }

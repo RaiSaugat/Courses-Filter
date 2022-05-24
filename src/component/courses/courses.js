@@ -16,7 +16,7 @@ function Courses() {
           ))}
         </>
       ) : (
-        <h2>No courses</h2>
+        <h2 className="no__course">No courses</h2>
       )}
     </div>
   );
@@ -37,6 +37,13 @@ function Course({ data }) {
       ? 'inactive'
       : 'ongoing';
 
+  const buttonText =
+    data.status === 'active'
+      ? 'Instructing'
+      : data.status === 'ended'
+      ? 'Join'
+      : 'Enrolled';
+
   return (
     <div className="course">
       <img src={data.avatar} alt={data.name} />
@@ -46,7 +53,7 @@ function Course({ data }) {
           <p>{data.name}</p>
           <p className={`course__status ${className}`}>{courseStatus}</p>
         </div>
-        <button>Join</button>
+        <button className={className}>{buttonText}</button>
       </div>
     </div>
   );

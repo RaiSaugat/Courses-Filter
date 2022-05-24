@@ -1,26 +1,19 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
-import Accordion from 'component/accordion';
-import { Checkbox, Input } from 'component/common';
+import { Accordion, Checkbox, Input } from 'component/common';
 import { AppContext } from 'context';
 
 function CategoryFilter({ data }) {
-  const { categoryFilter, setCategoryFilter, handleCategoryQueryChange } =
+  const { categoryFilter, setCategoryFilter, categoryQuery, setCategoryQuery } =
     useContext(AppContext);
-
-  const [query, setQuery] = useState('');
-
-  const handleChange = (e) => {
-    const { value } = e.target;
-    setQuery(value);
-    handleCategoryQueryChange(value);
-  };
 
   const handleValueChange = (e, option) => {
     if (e.target.checked) {
-      setCategoryFilter([...categoryFilter, option]);
+      setCategoryFilter([...categoryFilter, option.toLowerCase()]);
     } else {
-      const filtered = categoryFilter.filter((item) => item !== option);
+      const filtered = categoryFilter.filter(
+        (item) => item !== option.toLowerCase()
+      );
       setCategoryFilter(filtered);
     }
   };
@@ -29,8 +22,8 @@ function CategoryFilter({ data }) {
     <Accordion title="Category">
       <Input
         type="text"
-        value={query}
-        onChange={handleChange}
+        value={categoryQuery}
+        onChange={(e) => setCategoryQuery(e.target.value)}
         placeholder="Search Category"
       />
 
@@ -40,7 +33,7 @@ function CategoryFilter({ data }) {
             <Checkbox
               key={category}
               onChange={(e) => handleValueChange(e, category)}
-              isChecked={categoryFilter.includes(category)}
+              isChecked={categoryFilter.includes(category.toLowerCase())}
             >
               {category}
             </Checkbox>

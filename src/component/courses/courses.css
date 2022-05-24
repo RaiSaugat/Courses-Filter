@@ -6,8 +6,24 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
+@media only screen and (max-width: 680px) {
+  .course {
+    height: 180px;
+  }
+
+  .courses .no__course {
+    margin-top: 5rem;
+  }
+}
+
 .course img {
   height: 100%;
+}
+
+@media only screen and (max-width: 680px) {
+  .course img {
+    width: 140px;
+  }
 }
 
 .course .info__wrapper {
@@ -15,6 +31,12 @@
   justify-content: space-between;
   width: 100%;
   padding: 2rem;
+}
+
+@media only screen and (max-width: 680px) {
+  .course .info__wrapper {
+    flex-direction: column;
+  }
 }
 
 .course .info__wrapper .information {
@@ -45,6 +67,10 @@
   color: #539754;
 }
 
+.course .info__wrapper .information .course__status.ongoing {
+  color: #539754;
+}
+
 .course .info__wrapper button {
   font-size: 1.6rem;
   border-radius: 18px;
@@ -55,6 +81,11 @@
   color: white;
   cursor: pointer;
   background-image: linear-gradient(to right, #984c96, #5f3678);
+  opacity: 0.6;
+}
+
+.course .info__wrapper button.inactive {
+  opacity: 1;
 }
 
 .course .info__wrapper button:hover {
