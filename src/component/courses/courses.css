@@ -6,6 +6,12 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
+.courses .no__course {
+  padding: 2rem;
+  font-size: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
 @media only screen and (max-width: 680px) {
   .course {
     height: 180px;

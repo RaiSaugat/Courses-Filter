@@ -16,6 +16,7 @@
 .filter__wrapper .filter__header svg {
   height: 20px;
   width: 20px;
+  margin-right: 0.4rem;
 }
 
 .filter__wrapper .filter__header::after {

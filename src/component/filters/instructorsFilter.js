@@ -18,7 +18,7 @@ function InstructorFilter({ data }) {
   };
 
   return (
-    <Accordion title="Instructions">
+    <Accordion title="Instructors">
       {data &&
         data.map((instructor, index) => {
           return (
